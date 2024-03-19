@@ -11,5 +11,5 @@ import { LoginComponent } from "./login/login.component";
     imports: [CommonModule, RouterOutlet, LoginComponent]
 })
 export class AppComponent {
-  title = 'Trabalho Faculdade';
+  title = 'IFMT-Devops-AOMS';
 }
