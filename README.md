@@ -1,6 +1,7 @@
 **IFMT-Devops-AOMS**
 
 **Gerando um build**
+
 Para gerar um build, insira no terminal "ng build --configuration production",é gerado uma pasta dist com a imagem do seu projeto. Ao instalar o node vem com ele um npx, para poder rodar o pacote.
 Insira no terminal "npx http-serve dist/"nome do projeto", para levantar no localhost a imagem do seu projeto.
 
@@ -11,10 +12,12 @@ Após isso apenas dar commit e dar push para o main.
  
 
 **Configurando git pages**
+
 Para configurar o gitpages seleciona a branch main e /docs, a pasta da imagem do projeto. Ao entrar na url criada já inicializa o projeto.
 
 
 **Automatizando o deploy**
+
 Para automatizar utilize a biblioteca angular-cli-ghpages, adicionando ela com o comando: ng add angular-cli-ghpages.
 
 No arquivo angular.json, na opção chamada deploy no arquivo, adicione dentro de "options" o "baseHref": "/"nome do projeto"/".
