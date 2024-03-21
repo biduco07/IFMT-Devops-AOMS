@@ -1,5 +1,6 @@
 **IFMT-Devops-AOMS**
 
+
 **Gerando um build**
 
 Para gerar um build, insira no terminal "ng build --configuration production",é gerado uma pasta dist com a imagem do seu projeto. Ao instalar o node vem com ele um npx, para poder rodar o pacote.
@@ -11,9 +12,11 @@ Ao rodar npm run deploy:ghdocs, ele gera uma pasta docs com o build, o href fica
 Após isso apenas dar commit e dar push para o main.
  
 
+
 **Configurando git pages**
 
 Para configurar o gitpages seleciona a branch main e /docs, a pasta da imagem do projeto. Ao entrar na url criada já inicializa o projeto.
+
 
 
 **Automatizando o deploy**
