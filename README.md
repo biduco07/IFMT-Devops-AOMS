@@ -1,4 +1,4 @@
-#IFMT-Devops-AOMS
+**IFMT-Devops-AOMS**
 
 ##Gerando um build
 Para gerar um build, insira no terminal "ng build --configuration production",é gerado uma pasta dist com a imagem do seu projeto. Ao instalar o node vem com ele um npx, para poder rodar o pacote.
