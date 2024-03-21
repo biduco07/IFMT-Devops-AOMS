@@ -1,27 +1,24 @@
-# TrabalhoFacul
+#IFMT-Devops-AOMS
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.0.
+##Gerando um build
+Para gerar um build, insira no terminal "ng build --configuration production",é gerado uma pasta dist com a imagem do seu projeto. Ao instalar o node vem com ele um npx, para poder rodar o pacote.
+Insira no terminal "npx http-serve dist/"nome do projeto", para levantar no localhost a imagem do seu projeto.
 
-## Development server
+Para facilitar, crie um script no package.json = "deploy:ghdocs": "ng build --configuration production --output-path docs --base-href /"nome do projeto"/"
+Ao rodar npm run deploy:ghdocs, ele gera uma pasta docs com o build, o href fica com o nome do projeto.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Após isso apenas dar commit e dar push para o main.
+ 
 
-## Code scaffolding
+##Configurando git pages.
+Para configurar o gitpages seleciona a branch main e /docs, a pasta da imagem do projeto. Ao entrar na url criada já inicializa o projeto.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+##Automatizando o deploy.
+Para automatizar utilize a biblioteca angular-cli-ghpages, adicionando ela com o comando: ng add angular-cli-ghpages.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+No arquivo angular.json, na opção chamada deploy no arquivo, adicione dentro de "options" o "baseHref": "/"nome do projeto"/".
 
-## Running unit tests
+No terminal insera ng deploy, ele já roda o build production e o base href. Ele cria um git a branch gh-pages e faz o (commit e push) automaticamente.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+No github pages altere a branch da main para branch gh-pages e a pasta /root, ao salvar o local continua o mesmo, porém ao dar o comando "ng deploy" já sobe automaticamente para o git pages.
