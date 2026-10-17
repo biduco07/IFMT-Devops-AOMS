@@ -25,7 +25,7 @@ src/
 
 ## Pré-requisitos
 
-- [Node.js](https://nodejs.org/) 18.13+ ou 20 (o Angular 17 não suporta oficialmente versões mais novas)
+- [Node.js](https://nodejs.org/) 24 (a mesma versão usada no pipeline)
 - npm (já vem com o Node)
 
 ## Como rodar localmente
@@ -68,7 +68,7 @@ O workflow [`.github/workflows/main.yml`](.github/workflows/main.yml) funciona a
 
 1. **Em todo pull request para a `main`:** instala as dependências e roda o build de produção. Se o build quebrar, o PR mostra o erro.
 2. **Em todo push na `main`** (por exemplo, ao fazer merge de um PR):
-   1. instala as dependências (`npm ci`) com Node 20;
+   1. instala as dependências (`npm ci`) com Node 24;
    2. gera o build de produção com `--base-href /IFMT-Devops-AOMS/`, que é o caminho do site no Pages;
    3. envia a pasta `dist/trabalho-facul/browser` como artefato (`actions/upload-pages-artifact`);
    4. publica o artefato no GitHub Pages (`actions/deploy-pages`).
