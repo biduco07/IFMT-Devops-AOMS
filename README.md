@@ -66,7 +66,7 @@ O deploy é **automático**. Não é preciso gerar build nem commitar arquivos c
 
 O workflow [`.github/workflows/main.yml`](.github/workflows/main.yml) funciona assim:
 
-1. **Em todo pull request para a `main`:** instala as dependências e roda o build de produção. Se o build quebrar, o PR mostra o erro.
+1. **Em todo pull request para a `main` ou para a `dev`:** instala as dependências e roda o build de produção. Se o build quebrar, o PR mostra o erro.
 2. **Em todo push na `main`** (por exemplo, ao fazer merge de um PR):
    1. instala as dependências (`npm ci`) com Node 24;
    2. gera o build de produção com `--base-href /IFMT-Devops-AOMS/`, que é o caminho do site no Pages;

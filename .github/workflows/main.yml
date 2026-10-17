@@ -1,5 +1,5 @@
 # Build da aplicação Angular e deploy no GitHub Pages.
-# - Em pull requests: só faz o build, para garantir que nada quebrou.
+# - Em pull requests (para a main ou a dev): só faz o build, para garantir que nada quebrou.
 # - Em push na main (ou execução manual): faz o build e publica no Pages.
 name: Build e deploy no GitHub Pages
 
@@ -7,7 +7,7 @@ on:
   push:
     branches: ["main"]
   pull_request:
-    branches: ["main"]
+    branches: ["main", "dev"]
   workflow_dispatch:
 
 permissions:
