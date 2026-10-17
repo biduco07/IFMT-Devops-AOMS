@@ -10,6 +10,9 @@
     "deploy:ghdocs": "ng build --configuration production --output-path docs --base-href /IFMT-Devops-AOMS/"
   },
   "private": true,
+  "engines": {
+    "node": "^22.22.3 || ^24.15.0 || >=26.0.0"
+  },
   "dependencies": {
     "@angular/animations": "^22.2.3",
     "@angular/cdk": "^22.2.3",
