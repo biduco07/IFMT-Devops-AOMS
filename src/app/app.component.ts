@@ -1,6 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
-import { RouterOutlet } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 
 @Component({
@@ -8,7 +7,7 @@ import { LoginComponent } from './login/login.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   changeDetection: ChangeDetectionStrategy.Eager,
-  imports: [RouterOutlet, LoginComponent],
+  imports: [LoginComponent],
 })
 export class AppComponent {
   title = 'IFMT-Devops-AOMS';
