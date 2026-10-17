@@ -1,27 +1,82 @@
-# TrabalhoFacul
+# IFMT-Devops-AOMS
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.0.
+Trabalho da disciplina de **DevOps do IFMT** (2024). É uma aplicação **Angular 17** com uma tela de login, publicada automaticamente no **GitHub Pages** por um pipeline do GitHub Actions.
 
-## Development server
+🔗 Site publicado: <https://biduco07.github.io/IFMT-Devops-AOMS/>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Sobre o projeto
 
-## Code scaffolding
+- **Framework:** Angular 17 (componentes standalone)
+- **UI:** Angular Material e Tailwind CSS
+- **Tela:** formulário de login (`src/app/login`) — apenas a interface, ainda sem autenticação de verdade
+- **CI/CD:** GitHub Actions faz o build e publica no GitHub Pages a cada push na `main`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+src/
+├── app/
+│   ├── login/            # componente da tela de login
+│   ├── app.component.*   # componente raiz (renderiza <app-login>)
+│   ├── app.config.ts
+│   └── app.routes.ts
+├── index.html
+└── styles.css
+.github/workflows/main.yml   # pipeline de build e deploy
+```
 
-## Build
+## Pré-requisitos
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- [Node.js](https://nodejs.org/) 18.13+ ou 20 (o Angular 17 não suporta oficialmente versões mais novas)
+- npm (já vem com o Node)
 
-## Running unit tests
+## Como rodar localmente
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+npm ci        # instala as dependências exatamente como estão no package-lock.json
+npm start     # sobe o servidor de desenvolvimento
+```
 
-## Running end-to-end tests
+Abra <http://localhost:4200/>. A página recarrega sozinha quando um arquivo é alterado.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Como gerar o build
 
-## Further help
+```bash
+npm run build
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+O build de produção é gerado em `dist/trabalho-facul/browser/`. Para testar esse build localmente:
+
+```bash
+npx http-server dist/trabalho-facul/browser
+```
+
+> Para simular exatamente o que vai para o GitHub Pages, gere o build com o caminho do site:
+> `npx ng build --configuration production --base-href /IFMT-Devops-AOMS/`
+
+## Testes
+
+```bash
+npm test
+```
+
+Roda os testes unitários com Karma e Jasmine (precisa do Google Chrome instalado).
+
+## Deploy no GitHub Pages
+
+O deploy é **automático**. Não é preciso gerar build nem commitar arquivos compilados.
+
+O workflow [`.github/workflows/main.yml`](.github/workflows/main.yml) funciona assim:
+
+1. **Em todo pull request para a `main`:** instala as dependências e roda o build de produção. Se o build quebrar, o PR mostra o erro.
+2. **Em todo push na `main`** (por exemplo, ao fazer merge de um PR):
+   1. instala as dependências (`npm ci`) com Node 20;
+   2. gera o build de produção com `--base-href /IFMT-Devops-AOMS/`, que é o caminho do site no Pages;
+   3. envia a pasta `dist/trabalho-facul/browser` como artefato (`actions/upload-pages-artifact`);
+   4. publica o artefato no GitHub Pages (`actions/deploy-pages`).
+
+Também dá para disparar o deploy manualmente em **Actions → Build e deploy no GitHub Pages → Run workflow**.
+
+### Configuração necessária (uma vez só)
+
+Em **Settings → Pages → Build and deployment → Source**, selecione **GitHub Actions**.
+
+O andamento de cada deploy aparece na aba **Actions**, e o link do site aparece no ambiente `github-pages` do repositório.
