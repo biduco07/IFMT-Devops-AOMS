@@ -1,14 +1,21 @@
 
     <div class="page">
-        <form method="POST" class="formLogin">
+        <form class="formLogin" [formGroup]="form" (ngSubmit)="enviar()">
             <h1>Login</h1>
             <p>Digite os seus dados de acesso no campo abaixo.</p>
             <label for="email">Login</label>
-            <input type="email" placeholder="Digite seu Login" autofocus="true" />
+            <input id="email" type="email" formControlName="email" placeholder="Digite seu Login" autofocus="true" />
+            @if (mostrarErro('email', 'required')) {
+                <span class="erro" id="erro-email">Informe o seu e-mail.</span>
+            } @else if (mostrarErro('email', 'email')) {
+                <span class="erro" id="erro-email">Informe um e-mail válido.</span>
+            }
             <label for="password">Senha</label>
-            <input type="password" placeholder="Digite sua Senha" />
+            <input id="password" type="password" formControlName="senha" placeholder="Digite sua Senha" />
+            @if (mostrarErro('senha', 'required')) {
+                <span class="erro" id="erro-senha">Informe a sua senha.</span>
+            }
             <a href="/">Esqueci minha senha</a>
             <input type="submit" value="Acessar" class="btn" />
         </form>
     </div>
-
