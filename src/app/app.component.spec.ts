@@ -14,16 +14,17 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'trabalho-facul' title`, () => {
+  it(`should have the 'IFMT-Devops-AOMS' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('trabalho-facul');
+    expect(app.title).toEqual('IFMT-Devops-AOMS');
   });
 
-  it('should render title', () => {
+  it('should render the login screen', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, trabalho-facul');
+    expect(compiled.querySelector('app-login')).not.toBeNull();
+    expect(compiled.querySelector('h1')?.textContent).toContain('Login');
   });
 });
